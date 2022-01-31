@@ -1,0 +1,51 @@
+<mat-card>
+  <label class="dropdown">
+
+    <div class="dd-button">
+      Regions
+    </div>
+    <input type="checkbox" class="dd-input" id="test">
+    
+    <ul class="dd-menu">
+      <li *ngFor="let region of regionList" (click)="setRegion(region.code)">{{ region.nom }}</li>
+    </ul>
+      
+  </label>
+  
+  <label class="dropdown" *ngIf="departementList.length > 0">
+  
+    <div class="dd-button">
+      Departements
+    </div>
+    
+    <input type="checkbox" class="dd-input" id="test">
+    
+    <ul class="dd-menu">
+      <li *ngFor="let departement of departementList" (click)="setDepartement(departement)">{{ departement.nom }}</li>
+    </ul> 
+  </label>
+  <label class="dropdown" *ngIf="communeList.length > 0">
+  
+    <div class="dd-button">
+      Communes
+    </div>
+    
+    <input type="checkbox" class="dd-input" id="test">
+    
+    <ul class="dd-menu">
+      <li *ngFor="let commune of communeList" (click)="setCommune(commune)">{{ commune.nom }}</li>
+    </ul> 
+  </label>
+</mat-card>
+
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        National piezotric stations
+      </mat-panel-title>
+      <mat-panel-description>
+        Here you can found specific location and dimension data of the national piezometric station network
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-piezometrie [location]="departementList" [locationCommune]="communeList"></app-piezometrie>
+  </mat-expansion-panel>

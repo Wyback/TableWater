@@ -1,0 +1,28 @@
+<div class="container">
+  <label *ngIf="getLocationCommuneLength() <= 0">
+
+    <div class="dd-button">
+      Stations piezometrique
+    </div>
+    <input type="checkbox" (click)="getPiezoDatas()" class="dd-input" id="test">
+      
+  </label>
+  <label *ngIf="getLocationCommuneLength() > 0">
+  
+    <div class="dd-button">
+      Stations piezometrique
+    </div>
+    <input type="checkbox" (click)="getPiezoDatasCommune()" class="dd-input" id="test">
+      
+  </label>
+  <mat-grid-list cols="4" rowHeight="4:1">
+    <div *ngFor="let piezo of piezometrieList | paginate: { itemsPerPage: 12, currentPage: p }">
+      <mat-grid-tile>
+        <mat-card>
+          {{ piezo.nom_commune }} - {{ piezo.profondeur_investigation }}
+        </mat-card>
+      </mat-grid-tile>
+    </div>
+  </mat-grid-list>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
